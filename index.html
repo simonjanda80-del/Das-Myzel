@@ -1,374 +1,372 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Die Brücke — Das Heterarchische Protokoll</title>
-  <meta name="description" content="Wie verhindern wir, dass Orientierung zu Herrschaft wird?" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --bg:         #0e0e0d;
-      --bg-raised:  #141412;
-      --border:     #2a2a26;
-      --text:       #f0f0ec;
-      --text-dim:   #9ab890;
-      --text-muted: #5a7856;
-      --accent:     #8a9a7a;
-      --accent-dim: #4a5442;
-      --serif:      'Lato', system-ui, sans-serif;
-      --mono:       'DM Mono', 'Courier New', monospace;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Die Brücke — Das Heterarchische Protokoll</title>
+<meta name="description" content="Wie verhindern wir, dass Orientierung zu Herrschaft wird?" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --bg: #0e0e0d;
+  --bg-raised: #141412;
+  --border: #2a2a26;
+  --text: #f0f0ec;
+  --text-dim: #9ab890;
+  --text-muted: #5a7856;
+  --accent: #8a9a7a;
+  --accent-dim: #4a5442;
+  --serif: 'Lato', system-ui, sans-serif;
+  --mono: 'DM Mono', 'Courier New', monospace;
+}
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: #f0f0ec;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.85;
+  min-height: 100vh;
+}
 
-    body {
-      background: var(--bg);
-      color: #f0f0ec;
-      font-family: var(--serif);
-      font-weight: 400;
-      font-size: 20px;
-      line-height: 1.85;
-      min-height: 100vh;
-    }
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
 
-    .container {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
+/* ─── Header ─── */
+header {
+  border-bottom: 1px solid var(--border);
+  padding: 3.5rem 0 3rem;
+}
 
-    /* ─── Header ─── */
-    header {
-      border-bottom: 1px solid var(--border);
-      padding: 3.5rem 0 3rem;
-    }
+header .eyebrow {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 300;
+  letter-spacing: 0.18em;
+  color: #6a8060;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
 
-    header .eyebrow {
-      font-family: var(--mono);
-      font-size: 0.7rem;
-      font-weight: 300;
-      letter-spacing: 0.18em;
-      color: #6a8060;
-      text-transform: uppercase;
-      margin-bottom: 1.25rem;
-    }
+header h1 {
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  color: #f0f0ec;
+  margin-bottom: 1.5rem;
+}
 
-    header h1 {
-      font-size: clamp(2.2rem, 5vw, 3.4rem);
-      font-weight: 300;
-      letter-spacing: -0.01em;
-      line-height: 1.15;
-      color: #f0f0ec;
-      margin-bottom: 1.5rem;
-    }
+header h1 em {
+  font-style: italic;
+  color: #f0f0ec;
+}
 
-    header h1 em {
-      font-style: italic;
-      color: #f0f0ec;
-    }
+.leitfrage {
+  font-size: 1.05rem;
+  font-style: italic;
+  color: #f0f0ec;
+  border-left: 1px solid var(--accent-dim);
+  padding-left: 1.25rem;
+  max-width: 520px;
+  margin-bottom: 1.25rem;
+}
 
-    .leitfrage {
-      font-size: 1.05rem;
-      font-style: italic;
-      color: #f0f0ec;
-      border-left: 1px solid var(--accent-dim);
-      padding-left: 1.25rem;
-      max-width: 520px;
-      margin-bottom: 1.25rem;
-    }
+.untertitel {
+  font-size: 0.88rem;
+  color: #b8d4b0;
+  font-style: italic;
+  padding-left: 1.25rem;
+  border-left: 1px solid var(--border);
+  max-width: 520px;
+}
 
-    .untertitel {
-      font-size: 0.88rem;
-      color: #b8d4b0;
-      font-style: italic;
-      padding-left: 1.25rem;
-      border-left: 1px solid var(--border);
-      max-width: 520px;
-    }
+/* ─── Nav ─── */
+nav {
+  padding: 1.75rem 0;
+  border-bottom: 1px solid var(--border);
+}
 
-    /* ─── Nav ─── */
-    nav {
-      padding: 1.75rem 0;
-      border-bottom: 1px solid var(--border);
-    }
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
 
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
+nav a {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  color: #f0f0ec;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
 
-    nav a {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      font-weight: 300;
-      letter-spacing: 0.12em;
-      color: #f0f0ec;
-      text-decoration: none;
-      text-transform: uppercase;
-      transition: color 0.2s;
-    }
+nav a:hover { color: #8a9a7a; }
 
-    nav a:hover { color: #8a9a7a; }
+/* ─── Sections ─── */
+section {
+  padding: 4rem 0;
+  border-bottom: 1px solid var(--border);
+}
 
-    /* ─── Sections ─── */
-    section {
-      padding: 4rem 0;
-      border-bottom: 1px solid var(--border);
-    }
+.section-label {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: #6a8060;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
 
-    .section-label {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      color: #6a8060;
-      text-transform: uppercase;
-      margin-bottom: 2rem;
-    }
+h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  margin-bottom: 1.5rem;
+  color: #f0f0ec;
+}
 
-    h2 {
-      font-size: clamp(1.5rem, 3vw, 2rem);
-      font-weight: 300;
-      letter-spacing: -0.01em;
-      line-height: 1.25;
-      margin-bottom: 1.5rem;
-      color: #f0f0ec;
-    }
+h3 {
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: #f0f0ec;
+  margin-bottom: 0.5rem;
+  margin-top: 2rem;
+}
 
-    h3 {
-      font-size: 1.05rem;
-      font-weight: 400;
-      color: #f0f0ec;
-      margin-bottom: 0.5rem;
-      margin-top: 2rem;
-    }
+p { margin-bottom: 1.25rem; }
+p:last-child { margin-bottom: 0; }
 
-    p { margin-bottom: 1.25rem; }
-    p:last-child { margin-bottom: 0; }
+ul {
+  list-style: none;
+  margin-bottom: 1.25rem;
+}
 
-    ul {
-      list-style: none;
-      margin-bottom: 1.25rem;
-    }
+ul li {
+  padding: 0.35rem 0 0.35rem 1.25rem;
+  position: relative;
+  color: #f0f0ec;
+  font-size: 0.97rem;
+}
 
-    ul li {
-      padding: 0.35rem 0 0.35rem 1.25rem;
-      position: relative;
-      color: #f0f0ec;
-      font-size: 0.97rem;
-    }
+ul li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: #6a8060;
+}
 
-    ul li::before {
-      content: '—';
-      position: absolute;
-      left: 0;
-      color: #6a8060;
-    }
+/* ─── Myzel block ─── */
+.myzel-block {
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  padding: 2rem;
+  margin: 2rem 0;
+}
 
-    /* ─── Myzel block ─── */
-    .myzel-block {
-      background: var(--bg-raised);
-      border: 1px solid var(--border);
-      padding: 2rem;
-      margin: 2rem 0;
-    }
+.myzel-block ul { margin-bottom: 0; }
 
-    .myzel-block ul { margin-bottom: 0; }
+/* ─── Celestine ─── */
+.celestine-item {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
 
-    /* ─── Celestine ─── */
-    .celestine-item {
-      padding: 1.5rem 0;
-      border-bottom: 1px solid var(--border);
-    }
+.celestine-item:last-child { border-bottom: none; }
 
-    .celestine-item:last-child { border-bottom: none; }
+.celestine-item p {
+  font-size: 0.95rem;
+  color: #f0f0ec;
+  margin-bottom: 0;
+}
 
-    .celestine-item p {
-      font-size: 0.95rem;
-      color: #f0f0ec;
-      margin-bottom: 0;
-    }
+/* ─── Prinzipien ─── */
+.prinzipien-grid { display: grid; gap: 0; }
 
-    /* ─── Prinzipien ─── */
-    .prinzipien-grid { display: grid; gap: 0; }
+.prinzip {
+  display: grid;
+  grid-template-columns: 2.5rem 1fr;
+  gap: 0 1rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--border);
+  align-items: start;
+}
 
-    .prinzip {
-      display: grid;
-      grid-template-columns: 2.5rem 1fr;
-      gap: 0 1rem;
-      padding: 1.25rem 0;
-      border-bottom: 1px solid var(--border);
-      align-items: start;
-    }
+.prinzip:last-child { border-bottom: none; }
 
-    .prinzip:last-child { border-bottom: none; }
+.prinzip-nr {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  color: #6a8a60;
+  padding-top: 0.25rem;
+}
 
-    .prinzip-nr {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      color: #6a8a60;
-      padding-top: 0.25rem;
-    }
+.prinzip-text strong {
+  display: block;
+  font-weight: 400;
+  color: #f0f0ec;
+  margin-bottom: 0.3rem;
+  font-size: 1rem;
+}
 
-    .prinzip-text strong {
-      display: block;
-      font-weight: 400;
-      color: #f0f0ec;
-      margin-bottom: 0.3rem;
-      font-size: 1rem;
-    }
+.prinzip-text span {
+  color: #f0f0ec;
+  font-size: 0.93rem;
+  line-height: 1.6;
+}
 
-    .prinzip-text span {
-      color: #f0f0ec;
-      font-size: 0.93rem;
-      line-height: 1.6;
-    }
+/* ─── Gedicht ─── */
+.gedicht {
+  font-style: italic;
+  color: #f0f0ec;
+  font-size: 1rem;
+  line-height: 2;
+}
 
-    /* ─── Gedicht ─── */
-    .gedicht {
-      font-style: italic;
-      color: #f0f0ec;
-      font-size: 1rem;
-      line-height: 2;
-    }
+.gedicht .strophe {
+  margin-bottom: 1.75rem;
+}
 
-    .gedicht .strophe {
-      margin-bottom: 1.75rem;
-    }
+.gedicht .strophe:last-of-type {
+  margin-bottom: 1.25rem;
+}
 
-    .gedicht .strophe:last-of-type {
-      margin-bottom: 1.25rem;
-    }
+.gedicht .zeile {
+  display: block;
+}
 
-    .gedicht .zeile {
-      display: block;
-    }
+.gedicht .autor {
+  display: block;
+  font-style: normal;
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: #6a8a60;
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+}
 
-    .gedicht .autor {
-      display: block;
-      font-style: normal;
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
-      color: #6a8a60;
-      margin-top: 0.5rem;
-      text-transform: uppercase;
-    }
+/* ─── Vision Transformation ─── */
+.transformation {
+  margin: 2rem 0;
+  display: grid;
+  gap: 0.75rem;
+}
 
-    /* ─── Vision Transformation ─── */
-    .transformation {
-      margin: 2rem 0;
-      display: grid;
-      gap: 0.75rem;
-    }
+.transform-row {
+  display: grid;
+  grid-template-columns: 1fr 1.5rem 1fr;
+  align-items: center;
+  gap: 0.75rem;
+}
 
-    .transform-row {
-      display: grid;
-      grid-template-columns: 1fr 1.5rem 1fr;
-      align-items: center;
-      gap: 0.75rem;
-    }
+.transform-from {
+  font-style: italic;
+  color: #f0f0ec;
+  font-size: 1.05rem;
+  text-align: right;
+}
 
-    .transform-from {
-      font-style: italic;
-      color: #f0f0ec;
-      font-size: 1.05rem;
-      text-align: right;
-    }
+.transform-arrow {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: #6a8060;
+  text-align: center;
+}
 
-    .transform-arrow {
-      font-family: var(--mono);
-      font-size: 0.8rem;
-      color: #6a8060;
-      text-align: center;
-    }
+.transform-to {
+  font-weight: 400;
+  color: #f0f0ec;
+  font-size: 1.05rem;
+}
 
-    .transform-to {
-      font-weight: 400;
-      color: #f0f0ec;
-      font-size: 1.05rem;
-    }
+/* ─── Vision ─── */
+.vision-block {
+  font-size: 1.05rem;
+  font-style: italic;
+  color: #f0f0ec;
+  border-left: 1px solid var(--accent-dim);
+  padding-left: 1.5rem;
+  margin: 2rem 0;
+  line-height: 1.9;
+}
 
-    /* ─── Vision ─── */
-    .vision-block {
-      font-size: 1.05rem;
-      font-style: italic;
-      color: #f0f0ec;
-      border-left: 1px solid var(--accent-dim);
-      padding-left: 1.5rem;
-      margin: 2rem 0;
-      line-height: 1.9;
-    }
+.coda {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: #6a8060;
+  text-transform: uppercase;
+  margin-top: 2.5rem;
+}
 
-    .coda {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
-      color: #6a8060;
-      text-transform: uppercase;
-      margin-top: 2.5rem;
-    }
+/* ─── Footer ─── */
+footer {
+  padding: 3rem 0 4rem;
+}
 
-    /* ─── Footer ─── */
-    footer {
-      padding: 3rem 0 4rem;
-    }
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  padding-top: 3rem;
+  border-top: 1px solid var(--border);
+}
 
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      padding-top: 3rem;
-      border-top: 1px solid var(--border);
-    }
+@media (max-width: 520px) {
+  .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+}
 
-    @media (max-width: 520px) {
-      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
-    }
+footer h3 {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: #6a8060;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  margin-top: 0;
+}
 
-    footer h3 {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      color: #6a8060;
-      text-transform: uppercase;
-      margin-bottom: 1rem;
-      margin-top: 0;
-    }
+footer p, footer address {
+  font-size: 0.85rem;
+  color: #6a8a60;
+  line-height: 1.75;
+  font-style: normal;
+}
 
-    footer p, footer address {
-      font-size: 0.85rem;
-      color: #6a8a60;
-      line-height: 1.75;
-      font-style: normal;
-    }
+footer a {
+  color: #f0f0ec;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
 
-    footer a {
-      color: #f0f0ec;
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
+footer a:hover { color: #8a9a7a; }
 
-    footer a:hover { color: #8a9a7a; }
-
-    .copyright {
-      margin-top: 3rem;
-      padding-top: 2rem;
-      border-top: 1px solid var(--border);
-      font-family: var(--mono);
-      font-size: 0.6rem;
-      letter-spacing: 0.1em;
-      color: #6a8a60;
-    }
-  </style>
+.copyright {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  color: #6a8a60;
+}
+</style>
 </head>
 <body>
-
 <div class="container">
 
   <header>
@@ -393,7 +391,6 @@
     </ul>
   </nav>
 
-
   <!-- ─── MYZEL ─── -->
   <section id="myzel">
     <p class="section-label">Metapher</p>
@@ -409,42 +406,34 @@
     </div>
   </section>
 
-
   <!-- ─── CELESTINE ─── -->
   <section id="celestine">
     <p class="section-label">Energetisches Fundament</p>
     <h2>Celestine-Synergie</h2>
     <p>Integriert mit den vier Gesprächsmustern der 10. Prophezeiung von Celestine.</p>
-
     <div class="celestine-item">
       <h3>Verzicht auf Kontrolldramen</h3>
       <p>Keine Energie-Diebstähle durch Einschüchterung, Ausfragen oder Opferrolle. Stattdessen gegenseitiges Halten der Vision und Rückkehr zur Authentizität.</p>
     </div>
-
     <div class="celestine-item">
       <h3>Aktive Energievergabe</h3>
       <p>Wenn jemand spricht, projizieren wir aktiv Energie, Fokus und Wertschätzung. Durch dieses Hochziehen wird der Sprecher brillanter und greift auf tiefere Intuition zu.</p>
     </div>
-
     <div class="celestine-item">
       <h3>Intuitiver Synergie-Flow</h3>
       <p>Kein Kampf um Redezeit. Die Gruppe spürt, wer den stärksten intuitiven Impuls hat. Das Wort fließt organisch wie ein Tanz.</p>
     </div>
-
     <div class="celestine-item">
       <h3>Vision halten</h3>
       <p>Wenn wir diese Prinzipien gemeinsam leben, kann zwischen uns etwas entstehen, das größer ist als die Summe der Einzelnen — ohne dass jemand sich selbst dafür aufgeben muss.</p>
     </div>
   </section>
 
-
   <!-- ─── 5 GESETZE ─── -->
   <section id="gesetze">
     <p class="section-label">Fundament</p>
     <h2>Die 5 Gesetze</h2>
-
     <div class="prinzipien-grid">
-
       <div class="prinzip">
         <span class="prinzip-nr">01</span>
         <div class="prinzip-text">
@@ -452,7 +441,6 @@
           <span>Es gibt kein Zentrum. Niemand trägt allein. Niemand herrscht allein.</span>
         </div>
       </div>
-
       <div class="prinzip">
         <span class="prinzip-nr">02</span>
         <div class="prinzip-text">
@@ -460,7 +448,6 @@
           <span>Zwang bricht das System. Schwingung hält es zusammen. Was in Resonanz ist, braucht keine Aufsicht.</span>
         </div>
       </div>
-
       <div class="prinzip">
         <span class="prinzip-nr">03</span>
         <div class="prinzip-text">
@@ -468,7 +455,6 @@
           <span>Nicht als Datenblatt, sondern als Frequenz. Was als Gedicht lebt, übersteht, was als Regel vergessen wird.</span>
         </div>
       </div>
-
       <div class="prinzip">
         <span class="prinzip-nr">04</span>
         <div class="prinzip-text">
@@ -476,7 +462,6 @@
           <span>Niemand herrscht, es gibt keinen Guru. Was keinen Mittelpunkt hat, kann nicht am Mittelpunkt gebrochen werden.</span>
         </div>
       </div>
-
       <div class="prinzip">
         <span class="prinzip-nr">05</span>
         <div class="prinzip-text">
@@ -484,32 +469,41 @@
           <span>Was Aufmerksamkeit bekommt, wächst. Was sie entzieht, herrscht. Hier wird sie geschützt.</span>
         </div>
       </div>
-
     </div>
-
     <div class="vision-block" style="margin-top: 2.5rem;">
       Wahrheit steht über Harmonie. Ein ehrliches Veto ist wertvoller als ein falscher Konsens.
     </div>
-
   </section>
-
 
   <!-- ─── 13 PRINZIPIEN ─── -->
   <section id="prinzipien">
     <p class="section-label">Das Protokoll</p>
     <h2>Die 13 Prinzipien</h2>
 
+    <!-- ── VOR DEM EINTRETEN (Sila-Version) ── -->
     <div class="myzel-block" style="margin-bottom: 2rem;">
       <strong style="display: block; margin-bottom: 0.75rem; color: #f0f0ec;">Vor dem Eintreten</strong>
-      <p style="font-size: 0.95rem;">Wer kommt, reguliert sich selbst. Die Gruppe trägt dich nicht — sie arbeitet mit dir. Unreguliertes Kommen erzeugt Chaos: das ist nicht die Aufgabe der Brücke, sondern deine eigene Verantwortung.</p>
-      <p style="font-size: 0.95rem; margin-top: 0.75rem;">Aus der Gruppe trägt, wer genug Kraft und Wohlwollen hat. Alles andere ist keine Teilnahme, sondern Belastung.</p>
+
+      <p style="font-size: 0.95rem;">Wir üben uns darin, reguliert zu kommen —<br>
+      nicht perfekt, aber präsent.<br>
+      Nicht ohne Schmerz, aber ohne ihn als Waffe.</p>
+
+      <p style="font-size: 0.95rem; margin-top: 0.75rem;">Wir üben uns darin, Kraft mitzubringen —<br>
+      nicht immer viel, aber ehrlich.<br>
+      Wer heute nichts hat, sagt es.<br>
+      Das ist auch eine Form von Stärke.</p>
+
+      <p style="font-size: 0.95rem; margin-top: 0.75rem;">Wir üben uns darin, Wohlwollen zu tragen —<br>
+      nicht als Pflicht, sondern als Richtung.<br>
+      Manchmal gelingt es. Manchmal nicht.<br>
+      Wir kommen trotzdem wieder.</p>
+
       <p style="font-size: 0.95rem; margin-top: 0.75rem; font-style: italic;">Komm. Bleib. Geh. Komm wieder. Das ist genug.</p>
     </div>
 
     <p>Keine Regeln – Prinzipien, die wir gemeinsam halten. Ein lebendiger Rahmen für ehrliche Zusammenarbeit.</p>
 
     <div class="prinzipien-grid">
-
       <div class="prinzip">
         <span class="prinzip-nr">01</span>
         <div class="prinzip-text">
@@ -517,7 +511,6 @@
           <span>Kein „wir", kein „man", nicht „die Gruppe". Ich bin verantwortlich für mein Wort.</span>
         </div>
       </div>
-
       <div class="prinzip">
         <span class="prinzip-nr">02</span>
         <div class="prinzip-text">
@@ -525,7 +518,6 @@
           <span>Ich streiche „eigentlich" aus meinem Vokabular. Es sei denn, ich merke, dass ich ausweiche.</span>
         </div>
       </div>
-
       <div class="prinzip">
         <span class="prinzip-nr">03</span>
         <div class="prinzip-text">
@@ -533,7 +525,6 @@
           <span>Wenn mich jemand an mein Wort, an eine Vereinbarung oder an ein Prinzip erinnert, bin ich nicht angegriffen — sondern eingeladen, ehrlich hinzusehen.</span>
         </div>
       </div>
-
       <div class="prinzip">
         <span class="prinzip-nr">04</span>
         <div class="prinzip-text">
@@ -541,7 +532,6 @@
           <span>Ich teile mit, was aktuell in mir präsent ist – nicht das, was ich denke, was sein sollte.</span>
         </div>
       </div>
-
       <div class="prinzip">
         <span class="prinzip-nr">05</span>
         <div class="prinzip-text">
@@ -549,7 +539,6 @@
           <span>Humor ist willkommen, solange er niemanden zum Objekt macht – auch nicht mich selbst.</span>
         </div>
       </div>
-
       <div class="prinzip">
         <span class="prinzip-nr">06</span>
         <div class="prinzip-text">
@@ -557,7 +546,6 @@
           <span>„Ich werde nicht antworten, weil …" ist eine vollwertige Antwort, wenn die Lücke ehrlich gefüllt wird.</span>
         </div>
       </div>
-
       <div class="prinzip">
         <span class="prinzip-nr">07</span>
         <div class="prinzip-text">
@@ -565,7 +553,6 @@
           <span>Wir suchen nicht den besten Vorschlag, sondern den mit dem geringsten Widerstand im Kreis.</span>
         </div>
       </div>
-
       <div class="prinzip">
         <span class="prinzip-nr">08</span>
         <div class="prinzip-text">
@@ -573,7 +560,6 @@
           <span>Ein Veto erfordert eine Begründung aus dem eigenen Empfinden, nicht aus strategischem Kalkül. Das Veto gilt besonders dann, wenn alle anderen gerade leuchten — je größer die Begeisterung, desto wertvoller der Widerspruch.</span>
         </div>
       </div>
-
       <div class="prinzip">
         <span class="prinzip-nr">09</span>
         <div class="prinzip-text">
@@ -581,7 +567,6 @@
           <span>Wer einen Vorschlag ablehnt, bietet eine konkrete Änderung oder einen alternativen Weg an.</span>
         </div>
       </div>
-
       <div class="prinzip">
         <span class="prinzip-nr">10</span>
         <div class="prinzip-text">
@@ -589,7 +574,6 @@
           <span>Ich vertraue darauf, dass der Kreis den bestmöglichen Weg findet.</span>
         </div>
       </div>
-
       <div class="prinzip">
         <span class="prinzip-nr">11</span>
         <div class="prinzip-text">
@@ -597,7 +581,6 @@
           <span>Nach der Entscheidung trage ich sie mit. Auch wenn ich einen anderen Vorschlag bevorzugt hätte.</span>
         </div>
       </div>
-
       <div class="prinzip">
         <span class="prinzip-nr">12</span>
         <div class="prinzip-text">
@@ -605,7 +588,6 @@
           <span>Die Verantwortung für die Einhaltung liegt bei allen. Wer einen Bruch sieht, spricht ihn an. Ohne Rang.</span>
         </div>
       </div>
-
       <div class="prinzip">
         <span class="prinzip-nr">13</span>
         <div class="prinzip-text">
@@ -613,20 +595,15 @@
           <span>Das dreizehnte Prinzip bleibt offen. Wir finden es gemeinsam, wenn wir es brauchen.</span>
         </div>
       </div>
-
     </div>
   </section>
-
 
   <!-- ─── VISION ─── -->
   <section id="vision">
     <p class="section-label">Wohin wir gehen</p>
     <h2>Die Vision: Seelengruppe</h2>
-
     <p>Wir sind nicht nur eine Gruppe, die ehrlich kommuniziert. Wir sind eine Seelengruppe, die sich bewusst dafür entscheidet, die Energie, die Intelligenz und die Seelenkraft jedes Mitglieds zu multiplizieren statt zu rauben. Wir arbeiten im ständigen, synergetischen Energieaustausch.</p>
-
     <p>Wenn wir diese Prinzipien wirklich leben, passiert etwas Magisches:</p>
-
     <div class="transformation">
       <div class="transform-row">
         <span class="transform-from">ehrlicher</span>
@@ -644,83 +621,69 @@
         <span class="transform-to">weise</span>
       </div>
     </div>
-
     <p class="coda">Willkommen auf der Brücke. Die Wilde 13 ist bereit.</p>
   </section>
-
 
   <!-- ─── GEDICHT ─── -->
   <section id="gedicht">
     <p class="section-label">Der erste Stein</p>
     <h2>Gedicht</h2>
-
     <div class="gedicht">
-
       <div class="strophe">
         <span class="zeile">Du wirfst einen Stein der Hässlichkeit</span>
         <span class="zeile">er ist hart und tut weh</span>
         <span class="zeile">denn wo er in mir ein Echo erzeugt</span>
         <span class="zeile">ist Schönheit, die ich nicht seh</span>
       </div>
-
       <div class="strophe">
         <span class="zeile">Und einen der Unzulänglichkeit</span>
         <span class="zeile">der mich schwächt und begrenzt</span>
         <span class="zeile">denn wo er ein Echo in mir erzeugt</span>
         <span class="zeile">ist unerkannte Kompetenz</span>
       </div>
-
       <div class="strophe">
         <span class="zeile">Du wirfst einen Stein der Machtlosigkeit</span>
         <span class="zeile">der in endlose Tiefen fällt</span>
         <span class="zeile">und wo er ein Echo in mir erzeugt</span>
         <span class="zeile">da wächst meine Kraft auf dem Feld</span>
       </div>
-
       <div class="strophe">
         <span class="zeile">Und einen der Fehlerhaftigkeit</span>
         <span class="zeile">der ist sehr treffend und stimmt</span>
         <span class="zeile">und wo er ein Echo in mir erzeugt</span>
         <span class="zeile">sind´s die Ansprüche, die es mir nimmt</span>
       </div>
-
       <div class="strophe">
         <span class="zeile">Du wirfst einen Stein der Vergänglichkeit</span>
         <span class="zeile">der reißt die Komfortzonen ein</span>
         <span class="zeile">denn wo er ein Echo in mir erzeugt</span>
         <span class="zeile">da kann auch nichts Festes mehr sein</span>
       </div>
-
       <div class="strophe">
         <span class="zeile">Und einen der Motivationslosigkeit</span>
         <span class="zeile">der holt mich auf den Boden zurück</span>
         <span class="zeile">denn wo er ein Echo in mir erzeugt</span>
         <span class="zeile">such ich nicht woanders nach Glück</span>
       </div>
-
       <div class="strophe">
         <span class="zeile">Du wirfst einen Stein der Trauer und Angst</span>
         <span class="zeile">zeigst mir mein verletztes Kind</span>
         <span class="zeile">und dann schubst du mich über den Rand und verlangst</span>
         <span class="zeile">dass ich Liebe und Freude dort find</span>
       </div>
-
       <div class="strophe">
         <span class="zeile">Und dann wirfst du den Stein der Einsamkeit</span>
         <span class="zeile">und lässt mich damit allein</span>
         <span class="zeile">und von jeglicher Bindung befreit</span>
         <span class="zeile">ergreif ich den ersten Stein…</span>
       </div>
-
       <span class="autor">— Simon Janda</span>
     </div>
   </section>
 
-
   <!-- ─── FOOTER / IMPRESSUM ─── -->
   <footer id="impressum">
     <div class="footer-grid">
-
       <div>
         <h3>Impressum</h3>
         <address>
@@ -732,15 +695,12 @@
           Simon Janda (Anschrift s. o.)
         </address>
       </div>
-
       <div>
         <h3>Datenschutz</h3>
         <p>Diese Seite setzt keine Cookies, nutzt kein Tracking und erhebt keine personenbezogenen Daten. Es findet kein Einsatz von Analyse-Diensten statt.</p>
         <p>Hosting: Vercel Inc., 340 Pine Street, Suite 701, San Francisco, CA 94104, USA. Beim Aufruf der Seite werden serverseitig die üblichen Verbindungsdaten (IP-Adresse, Zeitstempel) temporär gespeichert. Weitere Informationen: <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener">vercel.com/legal/privacy-policy</a>.</p>
       </div>
-
     </div>
-
     <p class="copyright">
       © <span id="year"></span> Simon Janda ·
       Das Heterarchische Protokoll / Die Brücke ·
@@ -752,10 +712,8 @@
   </footer>
 
 </div>
-
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 </script>
-
 </body>
 </html>
